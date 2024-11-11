@@ -1,19 +1,21 @@
 NAME = libftso_long.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LIBFT_DIR = ./libft
+LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
-LIBFTPRINTF_DIR = ./printf
+LIBFTPRINTF_DIR = ./includes/printf
 LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
+MINILIBX_DIR = ./includes/minilibx-linux
+MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
 # Source files
-SRCS = 	so_long.c 
+SRCS = 	srcs/so_long.c 
 
 # Object files
 OBJS = $(SRCS:.c=.o)
 
 # Rule to compile the executable
-so_long: $(OBJS) $(LIBFT) $(LIBFTPRINTF)
+so_long: $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(MINILIBX)
 	$(CC) $(CFLAGS) -o so_long $(OBJS) $(LIBFT) $(LIBFTPRINTF)
 	@echo "Executable so_long created."
 
