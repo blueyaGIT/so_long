@@ -35,6 +35,9 @@ $(LIBFT):
 $(LIBFTPRINTF): $(LIBFT)
 	@cd $(LIBFTPRINTF_DIR) && make
 
+$(MINILIBX): $(LIBFTPRINTF)
+	@cd $(MINILIBX_DIR) && make
+
 # Object file compilation rule
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -57,4 +60,4 @@ fclean: clean
 re: fclean all
 
 # Phony targets
-.PHONY: all clean fclean re $(LIBFT) $(LIBFTPRINTF)
+.PHONY: all clean fclean re $(LIBFT) $(LIBFTPRINTF) $(MINILIBX)
