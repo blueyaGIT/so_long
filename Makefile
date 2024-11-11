@@ -20,7 +20,7 @@ so_long: $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(MINILIBX)
 	@echo "Executable so_long created."
 
 # Default rule to compile all
-all: $(LIBFT) $(LIBFTPRINTF) $(NAME)
+all: $(LIBFT) $(LIBFTPRINTF) $(MINILIBX) $(NAME)
 
 # Rule to create the library
 $(NAME): $(OBJS)
@@ -47,6 +47,7 @@ clean:
 	@rm -f $(OBJS)
 	@cd $(LIBFT_DIR) && make clean
 	@cd $(LIBFTPRINTF_DIR) && make clean
+	@cd $(MINILIBX_DIR) && make clean
 	@echo "Object files removed."
 
 # Clean all generated files
@@ -54,6 +55,7 @@ fclean: clean
 	@rm -f $(NAME) push_swap
 	@cd $(LIBFT_DIR) && make fclean
 	@cd $(LIBFTPRINTF_DIR) && make fclean
+	@cd $(MINILIBX_DIR) && make fclean
 	@echo "All generated files removed."
 
 # Rebuild everything
