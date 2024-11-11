@@ -7,7 +7,7 @@ LIBFTPRINTF_DIR = ./printf
 LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
 
 # Source files
-SRCS = 	
+SRCS = 	so_long.c 
 
 # Object files
 OBJS = $(SRCS:.c=.o)
