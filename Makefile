@@ -16,7 +16,7 @@ OBJS = $(SRCS:.c=.o)
 
 # Rule to compile the executable
 so_long: $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(MINILIBX)
-	$(CC) $(CFLAGS) -o so_long $(OBJS) $(LIBFT) $(LIBFTPRINTF)
+	$(CC) $(CFLAGS) -o so_long $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(MINILIBX)
 	@echo "Executable so_long created."
 
 # Default rule to compile all
