@@ -5,8 +5,8 @@ LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFTPRINTF_DIR = ./includes/printf
 LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
-# MLX42_DIR = ./includes/MLX42/include/MLX42
-# MLX42 = $(MLX42_DIR)/MLX42.a
+MLX42_DIR = ./includes/MLX42/include/MLX42
+MLX42 = $(MLX42_DIR)/libmlx42.a
 
 # Source files
 SRCS = 	srcs/so_long.c 
@@ -15,7 +15,7 @@ SRCS = 	srcs/so_long.c
 OBJS = $(SRCS:.c=.o)
 
 # Rule to compile the executable
-so_long: $(OBJS) $(LIBFT) $(LIBFTPRINTF)
+so_long: $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(MLX42)
 	$(CC) $(CFLAGS) -o so_long $(OBJS) $(LIBFT) $(LIBFTPRINTF)
 	@echo "Executable so_long created."
 
@@ -35,8 +35,9 @@ $(LIBFT):
 $(LIBFTPRINTF): $(LIBFT)
 	@cd $(LIBFTPRINTF_DIR) && make
 
-# $(MLX42): $(LIBFTPRINTF)
-# 	@cd $(MLX42_DIR) && make
+# Rule to compile MLX42
+$(MLX42): $(LIBFTPRINTF)
+	@cd $(MLX42_DIR) && make
 
 # Object file compilation rule
 .c.o:
@@ -47,7 +48,7 @@ clean:
 	@rm -f $(OBJS)
 	@cd $(LIBFT_DIR) && make clean
 	@cd $(LIBFTPRINTF_DIR) && make clean
-#	@cd $(MLX42_DIR) && make clean
+	@cd $(MLX42_DIR) && make clean
 	@echo "Object files removed."
 
 # Clean all generated files
@@ -55,11 +56,11 @@ fclean: clean
 	@rm -f $(NAME) push_swap
 	@cd $(LIBFT_DIR) && make fclean
 	@cd $(LIBFTPRINTF_DIR) && make fclean
-#	@cd $(MLX42_DIR) && make fclean
+	@cd $(MLX42_DIR) && make fclean
 	@echo "All generated files removed."
 
 # Rebuild everything
 re: fclean all
 
 # Phony targets
-.PHONY: all clean fclean re $(LIBFT) $(LIBFTPRINTF)
+.PHONY: all clean fclean re $(LIBFT) $(LIBFTPRINTF) $(MLX42)
