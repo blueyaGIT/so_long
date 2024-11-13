@@ -70,6 +70,3 @@ re: fclean all
 
 # Phony targets
 .PHONY: all clean fclean re libmlx $(LIBFT) $(LIBFTPRINTF)
-
-
-test
