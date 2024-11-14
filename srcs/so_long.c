@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:44:03 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/14 10:37:03 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/14 18:35:27 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 void lol(t_visual *visual)
 {
-	int x = WINDOW_X / 2;
 	int y = WINDOW_Y / 2;
 	for(int i = 0; i < 10; i++)
 	{
+		int x = WINDOW_X / 2;
 		for(int j=0; j<10; j++)
 		{
 			mlx_put_pixel(visual->img, x, y, 0xFF0000FF);
@@ -38,5 +38,6 @@ int	main(void)
 	visual.img = mlx_new_image(visual.mlx, WINDOW_X, WINDOW_X);
 	lol(&visual);
 	mlx_image_to_window(visual.mlx, visual.img, 0, 0);
+	mlx_loop(visual.mlx);
 	return (0);
 }
