@@ -1,6 +1,7 @@
 NAME = libftso_long.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Ofast
+HEADER = -I ./ -I $(MLX42_DIR)/include -I ./includes/libft
 LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFTPRINTF_DIR = ./includes/printf
@@ -17,20 +18,20 @@ OBJS = $(SRCS:.c=.o)
 
 # Rule to compile the executable
 so_long: $(OBJS) $(LIBFT) $(LIBFTPRINTF) libmlx
-	$(CC) $(CFLAGS) -o so_long $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(MLX42)
+	$(CC) $(CFLAGS) -o so_long $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(MLX42) $(LIBS)
 	@echo "Executable so_long created."
 
 # Default rule to compile all
-all: $(LIBFT) $(LIBFTPRINTF) $(NAME)
+all: libmlx $(LIBFT) $(LIBFTPRINTF) $(NAME)
 
 # Rule to create the library
-$(NAME): $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	@$(CC) $(HEADER) $(OBJ) $(LIBS) -o $(NAME)
 	@echo "Library $(NAME) created."
 
 # Rule to compile libft
 $(LIBFT):
-	@cd $(LIBFT_DIR) && make
+	@make -C ./includes/libft
 
 # Rule to compile libftprintf
 $(LIBFTPRINTF): $(LIBFT)
@@ -69,4 +70,4 @@ fclean: clean
 re: fclean all
 
 # Phony targets
-.PHONY: all clean fclean re libmlx $(LIBFT) $(LIBFTPRINTF)
+.PHONY: all clean fclean re libmlx $(LIBFT) $(LIBFTPRINTF) so_long
