@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:44:03 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/15 20:16:41 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/15 20:30:28 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	main(void)
 	visual.img = mlx_new_image(visual.mlx, WINDOW_X, WINDOW_X);
 	lol(&visual);
 	mlx_image_to_window(visual.mlx, visual.img, 0, 0);
-	mlx_scroll_hook(visual.mlx, mouseaction, &visual)
+	mlx_scroll_hook(visual.mlx, mouseaction, &visual);
+	mlx_key_hook(visual.mlx, key_pres, &visual);
+	mlx_image_to_window(visual.mlx, visual.img, 0, 0);
 	mlx_loop(visual.mlx);
+	close_window(&visual);
 	return (0);
 }
