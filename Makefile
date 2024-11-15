@@ -11,7 +11,8 @@ MLX42 = $(MLX42_DIR)/build/libmlx42.a
 LIBS = $(MLX42_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT_DIR)/libft.a -framework Cocoa -framework OpenGL -framework IOKit
 
 # Source files
-SRCS = 	srcs/so_long.c 
+SRCS = 	srcs/so_long.c \
+		srcs/utils.c
 
 # Object files
 OBJS = $(SRCS:.c=.o)
