@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 12:44:03 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/15 20:16:41 by dalbano          ###   ########.fr       */
+/*   Created: 2024/11/15 20:17:24 by dalbano           #+#    #+#             */
+/*   Updated: 2024/11/15 20:18:42 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,25 @@
 #include "../includes/printf/ft_printf.h"
 #include "../includes/MLX42/include/MLX42/MLX42.h"
 
-void lol(t_visual *visual)
+void	mouseaction(double a, double b, void *params)
 {
-	int y = WINDOW_Y / 2;
-	for(int i = 0; i < 10; i++)
-	{
-		int x = WINDOW_X / 2;
-		for(int j=0; j<10; j++)
-		{
-			mlx_put_pixel(visual->img, x, y, 0xFF0000FF);
-			x++;
-		}
-		y++;
-	}
-}
+	double		multiplier;
+	t_visual	*visual;
 
-int	main(void)
-{
-	t_visual	visual;
-	
-	visual.mlx = mlx_init(WINDOW_X, WINDOW_Y, "test", false);
-	visual.img = mlx_new_image(visual.mlx, WINDOW_X, WINDOW_X);
-	lol(&visual);
-	mlx_image_to_window(visual.mlx, visual.img, 0, 0);
-	mlx_scroll_hook(visual.mlx, mouseaction, &visual)
-	mlx_loop(visual.mlx);
-	return (0);
+	(void)a;
+	visual = (t_visual *)params;
+	if (mlx_is_key_down(visual->mlx, MLX_KEY_LEFT_SHIFT)
+		|| mlx_is_key_down(visual->mlx, MLX_KEY_RIGHT_SHIFT))
+		return ;
+	if (b > 0)
+		multiplier = 1.1;
+	else
+		multiplier = 0.9;
+	visual->scale *= multiplier;
+	if (visual->set == MANDELBROT)
+		loop_img_mandelbrot(visual);
+	else if (visual->set == JULIA)
+		loop_img_julia(visual);
+	else
+		loop_img_buringship(visual);
 }
