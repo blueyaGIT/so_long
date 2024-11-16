@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:43:15 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/13 13:51:58 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/16 16:42:30 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,8 @@ typedef struct s_visual
 // Implementations of ... operations
 
 // Helper functions
+void	print_ui(t_visual *visual);
+void	close_window(void *param);
+void	mouseaction(double a, double b, void *params);
 
 #endif /* SO_LONG_H */
