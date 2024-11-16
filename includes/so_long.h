@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:43:15 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/16 16:42:30 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/16 17:00:31 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,12 @@ typedef struct s_visual
 void	print_ui(t_visual *visual);
 void	close_window(void *param);
 void	mouseaction(double a, double b, void *params);
+
+// getch functions
+void	key_pres_julia(t_visual *visual, mlx_key_data_t key_data);
+void	key_rgb(t_visual *visual, mlx_key_data_t key_data);
+void	key_iterations(t_visual *visual, mlx_key_data_t key_data);
+void	key_move(t_visual *visual, mlx_key_data_t key_data);
+void	key_pres(mlx_key_data_t key_data, void *data);
 
 #endif /* SO_LONG_H */
