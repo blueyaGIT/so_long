@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 14:04:12 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 14:35:45 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/17 14:54:45 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ void	free_map(char **map)
 	int	i;
 
 	i = 0;
-	while (map[i++])
+	while (map[i])
+	{
 		free(map[i]);
+		i++;
+	}
 	free(map);
 }
 
@@ -35,10 +38,7 @@ int	get_num_rows(const char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-	{
-		perror("Error opening map file");
-		return (-1);
-	}
+		return (perror("Error opening map file"), -1);
 	rows = 0;
 	bytes_read = read(fd, buffer, sizeof(buffer));
 	while (bytes_read > 0)
@@ -48,6 +48,7 @@ int	get_num_rows(const char *filename)
 			if (buffer[i] == '\n')
 				rows++;
 	}
-	close(fd);
-	return (rows);
+	if (bytes_read == -1)
+		return (perror("Error reading map file"), close(fd), -1);
+	return (close(fd), rows);
 }
