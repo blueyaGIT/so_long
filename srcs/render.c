@@ -6,18 +6,18 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:57:01 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 14:53:11 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/17 16:07:22 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/MLX42/include/MLX42/MLX42.h"
+#include "../includes/so_long.h"
 #include "../includes/libft/libft.h"
 #include "../includes/printf/ft_printf.h"
-#include "../includes/so_long.h"
+#include "../includes/MLX42/include/MLX42/MLX42.h"
 
 #define TILE_SIZE 32
 
-void	render_map(char **map, mlx_t *mlx, mlx_image_t *win, void **textures)
+void	render_map(char **map, mlx_t *mlx, void **textures)
 {
 	mlx_image_t	*img;
 	int			x;

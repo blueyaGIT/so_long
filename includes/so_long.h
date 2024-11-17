@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:43:15 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 14:53:05 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/17 16:08:11 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	key_press(mlx_key_data_t key_data, void *data);
 char	*read_map(const char *filepath);
 char	**parse_map(char *map_string);
 void	validate_map(char **map);
-void	render_map(char **map, mlx_t *mlx, mlx_image_t *win, void **textures);
+void	render_map(char **map, mlx_t *mlx, void **textures);
 void	free_map(char **map);
 int		get_num_rows(const char *filename);
 
