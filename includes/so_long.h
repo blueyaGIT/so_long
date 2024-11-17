@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:43:15 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 13:58:01 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/17 14:02:30 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,6 @@ char	*read_map(const char *filepath);
 char	**parse_map(char *map_string);
 void	validate_map(char **map);
 void	render_map(char **map, void *mlx, void *win, void **textures);
+void	free_map(char **map);
 
 #endif /* SO_LONG_H */
