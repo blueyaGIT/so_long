@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:44:03 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 13:28:36 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/17 14:42:54 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,21 @@ void	print_ui(t_visual *visual)
 int	main(void)
 {
 	t_visual	visual;
+	char		*map_string;
+	char		**map;
+	int			rows;
 
+	map_string = read_map("assets/map.ber");
+	if (!map_string)
+		return (1);
+	rows = get_num_rows("assets/map.ber");
+	map = malloc(sizeof(char *) * rows);
+	if (parse_map_logic(map_string, map) == -1)
+	{
+		free(map_string);
+		free_map(map);
+		return (perror("Map parsing failed"), 1);
+	}
 	visual.mlx = mlx_init(WINDOW_X, WINDOW_Y, "test", false);
 	visual.img = mlx_new_image(visual.mlx, WINDOW_X, WINDOW_X);
 	print_ui(&visual);

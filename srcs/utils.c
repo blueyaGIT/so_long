@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 20:17:24 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 13:56:47 by dalbano          ###   ########.fr       */
+/*   Created: 2024/11/17 14:04:12 by dalbano           #+#    #+#             */
+/*   Updated: 2024/11/17 14:35:45 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,133 +15,39 @@
 #include "../includes/printf/ft_printf.h"
 #include "../includes/so_long.h"
 
-static void	parse_map_logic(char *map_string,
-							int row,
-							char *line_start,
-							char **map)
+void	free_map(char **map)
 {
-	int	len;
 	int	i;
-	int	j;
 
 	i = 0;
-	while (map_string[i++])
-	{
-		if (map_string[i] == '\n' || map_string[i + 1] == '\0')
-		{
-			if (map_string[i + 1] == '\0')
-				len = (&map_string[i] - line_start) + 1;
-			else
-				len = &map_string[i] - line_start;
-			map[row] = malloc(len + 1);
-			if (!map[row])
-				return (perror("Memory allocation failed"), NULL);
-			j = 0;
-			while (j++ < len)
-				map[row][j] = line_start[j];
-			map[row][len] = '\0';
-			row++;
-			line_start = &map_string[i + 1];
-		}
-	}
+	while (map[i++])
+		free(map[i]);
+	free(map);
 }
 
-char	*read_map(const char *filepath)
+int	get_num_rows(const char *filename)
 {
 	int		fd;
-	ssize_t	bytes_read;
-	char	*buffer;
-
-	fd = open(filepath, O_RDONLY);
-	if (fd < 0)
-		return (perror("Error opening file"), NULL);
-	buffer = malloc(10000);
-	if (!buffer)
-		return (perror("Memory allocation failed"), close(fd), NULL);
-	bytes_read = read(fd, buffer, 9999);
-	if (bytes_read < 0)
-		return (perror("Error reading file"), free(buffer), close(fd), NULL);
-	buffer[bytes_read] = '\0';
-	return (close(fd), buffer);
-}
-
-char	**parse_map(char *map_string)
-{
-	int		lines;
-	char	**map;
-	int		row;
-	char	*line_start;
-
-	row = 0;
-	lines = 0;
-	while (map_string[row++])
-		if (map_string[row] == '\n')
-			lines++;
-	map = malloc((lines + 1) * sizeof(char *));
-	if (!map)
-	{
-		perror("Memory allocation failed");
-		free(map_string);
-		exit(EXIT_FAILURE);
-	}
-	row = 0;
-	line_start = map_string;
-	parse_map_logic(map_string, row, line_start, *map);
-	map[row] = NULL;
-	return (map);
-}
-
-static int	validate_logic(int rows, int cols, char c, char **map)
-{
-	int	x;
-	int	y;
-	int	has_everything;
-
-	y = 0;
-	has_everything = 0;
-	while (y++ < rows)
-	{
-		x = 0;
-		while (x++ < cols)
-		{
-			c = map[y][x];
-			if ((y == 0 || y == rows - 1 || x == 0 || x == cols - 1)
-				&& c != '1')
-			{
-				perror("Map is not surrounded by walls");
-				exit(EXIT_FAILURE);
-			}
-			if (c == 'P' || c == 'E' || c == 'C')
-				has_everything++;
-		}
-	}
-	return (has_everything);
-}
-
-void	validate_map(char **map)
-{
+	char	buffer[1024];
 	int		rows;
-	int		cols;
-	int		has_everything;
-	char	c;
+	ssize_t	bytes_read;
+	int		i;
 
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error opening map file");
+		return (-1);
+	}
 	rows = 0;
-	cols = 0;
-	while (map[rows])
+	bytes_read = read(fd, buffer, sizeof(buffer));
+	while (bytes_read > 0)
 	{
-		if (cols == 0)
-			cols = strlen(map[rows]);
-		else if ((int)strlen(map[rows]) != cols)
-		{
-			perror("Map is not rectangular");
-			exit(EXIT_FAILURE);
-		}
-		rows++;
+		i = 0;
+		while (i++ < bytes_read)
+			if (buffer[i] == '\n')
+				rows++;
 	}
-	has_everything = validate_logic(rows, cols, c, *map);
-	if (has_everything < 1)
-	{
-		perror("Map must contain at least one 'P', 'E', and 'C'");
-		exit(EXIT_FAILURE);
-	}
+	close(fd);
+	return (rows);
 }

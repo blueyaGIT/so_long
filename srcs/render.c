@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:57:01 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 14:02:18 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/17 14:04:08 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,4 @@ void	render_map(char **map, void *mlx, void *win, void **textures)
 				* TILE_SIZE);
 		}
 	}
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i++])
-		free(map[i]);
-	free(map);
 }
