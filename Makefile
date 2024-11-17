@@ -13,6 +13,7 @@ LIBS = $(MLX42_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT_DIR)/libft
 # Source files
 SRCS = 	srcs/so_long.c \
 		srcs/utils.c \
+		srcs/utils2.c \
 		srcs/getch.c
 
 # Object files

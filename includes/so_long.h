@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:43:15 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/16 17:00:31 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/17 13:58:01 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <stdlib.h>
 # include <math.h>
 # include <string.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <unistd.h>
 
 typedef enum e_set
 {
@@ -27,16 +30,12 @@ typedef enum e_set
 	BURNINGSHIP,
 }				t_set;
 
-typedef struct s_so_long
+typedef struct s_player
 {
 	double		x;
 	double		y;
-	double		ca;
-	double		cb;
 	char		*so_long_name;
-	double		vertical_shift;
-	double		horizontal_shift;
-}				t_so_long;
+}				t_player;
 
 typedef struct s_px
 {
@@ -52,7 +51,7 @@ typedef struct s_px
 typedef struct s_visual
 {
 	t_set		set;
-	t_so_long	*slong;
+	t_player	*slong;
 	t_px		*px;
 	mlx_t		*mlx;
 	mlx_image_t	*img;
@@ -74,10 +73,13 @@ void	close_window(void *param);
 void	mouseaction(double a, double b, void *params);
 
 // getch functions
-void	key_pres_julia(t_visual *visual, mlx_key_data_t key_data);
-void	key_rgb(t_visual *visual, mlx_key_data_t key_data);
-void	key_iterations(t_visual *visual, mlx_key_data_t key_data);
 void	key_move(t_visual *visual, mlx_key_data_t key_data);
-void	key_pres(mlx_key_data_t key_data, void *data);
+void	key_press(mlx_key_data_t key_data, void *data);
+
+// util functions
+char	*read_map(const char *filepath);
+char	**parse_map(char *map_string);
+void	validate_map(char **map);
+void	render_map(char **map, void *mlx, void *win, void **textures);
 
 #endif /* SO_LONG_H */
