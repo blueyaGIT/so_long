@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:43:15 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 16:08:11 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/20 16:21:23 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define SO_LONG_H
 
 # include "libft/libft.h"
-# include "printf/ft_printf.h"
 # include "MLX42/include/MLX42/MLX42.h"
 # include <stdlib.h>
 # include <math.h>

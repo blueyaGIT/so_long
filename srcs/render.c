@@ -6,14 +6,11 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:57:01 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 16:07:22 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/20 16:21:46 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../includes/libft/libft.h"
-#include "../includes/printf/ft_printf.h"
-#include "../includes/MLX42/include/MLX42/MLX42.h"
 
 #define TILE_SIZE 32
 

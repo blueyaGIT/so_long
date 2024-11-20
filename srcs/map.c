@@ -6,13 +6,10 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 20:17:24 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 14:56:55 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/20 16:21:50 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/MLX42/include/MLX42/MLX42.h"
-#include "../includes/libft/libft.h"
-#include "../includes/printf/ft_printf.h"
 #include "../includes/so_long.h"
 
 char	*read_map(const char *filepath)

@@ -6,13 +6,10 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 14:04:12 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/17 14:54:45 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/20 16:21:57 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/MLX42/include/MLX42/MLX42.h"
-#include "../includes/libft/libft.h"
-#include "../includes/printf/ft_printf.h"
 #include "../includes/so_long.h"
 
 void	free_map(char **map)
