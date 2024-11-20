@@ -4,8 +4,6 @@ CFLAGS = -Wall -Wextra -Werror -Ofast
 HEADER = -I ./ -I $(MLX42_DIR)/include -I ./includes/libft
 LIBFT_DIR = ./includes/libft
 LIBFT = $(LIBFT_DIR)/libft.a
-LIBFTPRINTF_DIR = ./includes/printf
-LIBFTPRINTF = $(LIBFTPRINTF_DIR)/libftprintf.a
 MLX42_DIR = ./includes/MLX42
 MLX42 = $(MLX42_DIR)/build/libmlx42.a
 LIBS = $(MLX42_DIR)/build/libmlx42.a -ldl -lglfw -pthread -lm $(LIBFT_DIR)/libft.a -framework Cocoa -framework OpenGL -framework IOKit
@@ -21,12 +19,12 @@ SRCS = 	srcs/so_long.c \
 OBJS = $(SRCS:.c=.o)
 
 # Rule to compile the executable
-so_long: $(OBJS) $(LIBFT) $(LIBFTPRINTF) libmlx
-	$(CC) $(CFLAGS) -o so_long $(OBJS) $(LIBFT) $(LIBFTPRINTF) $(MLX42) $(LIBS)
+so_long: $(OBJS) $(LIBFT) libmlx
+	$(CC) $(CFLAGS) -o so_long $(OBJS) $(LIBFT) $(MLX42) $(LIBS)
 	@echo "Executable so_long created."
 
 # Default rule to compile all
-all: libmlx $(LIBFT) $(LIBFTPRINTF) $(NAME)
+all: libmlx $(LIBFT) $(NAME)
 
 # Rule to create the library
 $(NAME): $(OBJ)
@@ -36,10 +34,6 @@ $(NAME): $(OBJ)
 # Rule to compile libft
 $(LIBFT):
 	@make -C ./includes/libft
-
-# Rule to compile libftprintf
-$(LIBFTPRINTF): $(LIBFT)
-	@cd $(LIBFTPRINTF_DIR) && make
 
 # Rule to compile MLX42
 libmlx:
@@ -58,7 +52,6 @@ libmlx:
 clean:
 	@rm -f $(OBJS)
 	@cd $(LIBFT_DIR) && make clean
-	@cd $(LIBFTPRINTF_DIR) && make clean
 	@rm -rf $(MLX42_DIR)/build
 	@echo "Object files removed."
 
@@ -66,7 +59,6 @@ clean:
 fclean: clean
 	@rm -f $(NAME) so_long
 	@cd $(LIBFT_DIR) && make fclean
-	@cd $(LIBFTPRINTF_DIR) && make fclean
 	@rm -f $(NAME)
 	@echo "All generated files removed."
 
@@ -74,4 +66,4 @@ fclean: clean
 re: fclean all
 
 # Phony targets
-.PHONY: all clean fclean re libmlx $(LIBFT) $(LIBFTPRINTF) so_long
+.PHONY: all clean fclean re libmlx $(LIBFT) so_long
