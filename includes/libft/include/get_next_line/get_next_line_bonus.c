@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/13 14:53:13 by dalbano           #+#    #+#             */
-/*   Updated: 2024/11/19 11:37:03 by dalbano          ###   ########.fr       */
+/*   Updated: 2024/11/27 21:32:15 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ char	*extract_line(char **storage)
 
 int	read_and_store(int fd, char **storage)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	char	buffer[BUFFER_SIZE_GNL + 1];
 	ssize_t	bytes_read;
 	char	*temp;
 
 	if (!*storage)
 		*storage = ft_strdup_gnl("");
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	bytes_read = read(fd, buffer, BUFFER_SIZE_GNL);
 	while (bytes_read > 0)
 	{
 		buffer[bytes_read] = '\0';
@@ -58,7 +58,7 @@ int	read_and_store(int fd, char **storage)
 		*storage = temp;
 		if (ft_strchr_gnl(buffer, '\n'))
 			break ;
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		bytes_read = read(fd, buffer, BUFFER_SIZE_GNL);
 	}
 	if (bytes_read == 0 && *storage && **storage)
 		return (0);
@@ -70,7 +70,7 @@ char	*get_next_line(int fd)
 	static char	*storage[1024];
 	int			result;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE_GNL <= 0)
 		return (NULL);
 	result = read_and_store(fd, &storage[fd]);
 	if (result < 0 || (result == 0 && !*storage[fd]))
