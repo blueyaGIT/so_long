@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 14:04:12 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/08 16:23:04 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:22:41 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void	free_map(char ***map)
 
 	i = 0;
 	while ((*map)[i] != NULL)
-	{
-		free((*map)[i]);
-		i++;
-	}
+		free((*map)[i++]);
 	free(*map);
 	*map = NULL;
 }

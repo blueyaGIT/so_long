@@ -6,13 +6,13 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:35:38 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/14 20:22:01 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:18:34 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	game_sucess(t_game *game)
+void	game_success(t_game *game)
 {
 	mlx_delete_image(game->mlx, game->image.coin);
 	mlx_delete_image(game->mlx, game->image.exit);
@@ -22,6 +22,15 @@ void	game_sucess(t_game *game)
 	mlx_terminate(game->mlx);
 	free_map(&game->map);
 	exit(0);
+}
+
+void	delete_texture(t_txtr *texture)
+{
+	mlx_delete_texture(texture->exit);
+	mlx_delete_texture(texture->player);
+	mlx_delete_texture(texture->wall);
+	mlx_delete_texture(texture->floor);
+	mlx_delete_texture(texture->coin);
 }
 
 void	split_map(t_game *game, char *map_string)
@@ -41,9 +50,9 @@ void	path_name_checker(char *path)
 	int		i;
 	int		j;
 
-	str = "ber";
 	j = 0;
-	i = ft_strlen(path) - 3;
+	str = ".ber";
+	i = ft_strlen(path) - 4;
 	if (path[i] == str[j])
 	{
 		i++;
@@ -67,13 +76,4 @@ void	reading_map(t_game *game, char *path)
 	close(fd);
 	validate_map(map_string);
 	split_map(game, map_string);
-}
-
-void	delete_texture(t_txtr *texture)
-{
-	mlx_delete_texture(texture->exit);
-	mlx_delete_texture(texture->player);
-	mlx_delete_texture(texture->wall);
-	mlx_delete_texture(texture->floor);
-	mlx_delete_texture(texture->coin);
 }

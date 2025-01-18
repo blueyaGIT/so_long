@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:43:15 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/14 19:43:45 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:16:51 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <string.h>
 # include <unistd.h>
 
-# define BLOCK 50
+# define SIZE 50
 
 typedef struct s_pos
 {
@@ -107,7 +107,7 @@ bool				check_access(char **map_copy, char **original_map);
 bool				valid_map_access(t_game *game);
 void				validate_map(char *map_string);
 char				*read_lines(int fd);
-void				free_stuff(char *line, char *map_string, int fd);
+void				free_all(char *line, char *map_string, int fd);
 int					open_file(char *path);
 bool				nl_valid(char *mapstring);
 
@@ -117,6 +117,6 @@ void				delete_texture(t_txtr *texture);
 void				reading_map(t_game *game, char *path);
 void				path_name_checker(char *path);
 void				split_map(t_game *game, char *map_string);
-void				game_sucess(t_game *game);
+void				game_success(t_game *game);
 
 #endif /* SO_LONG_H */

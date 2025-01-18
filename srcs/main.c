@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:44:03 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/15 00:46:13 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:16:51 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 	argc = 0;
 	reading_map(&game, argv[1]);
 	map_valid(&game);
-	game.mlx = mlx_init(game.width * BLOCK, game.height * BLOCK, "so_long",
+	game.mlx = mlx_init(game.width * SIZE, game.height * SIZE, "so_long",
 			true);
 	if (!game.mlx)
 		exit_mlx(&game);
@@ -33,6 +33,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game.mlx, &getch, &game);
 	mlx_loop_hook(game.mlx, &check_success, &game);
 	mlx_loop(game.mlx);
-	game_sucess(&game);
+	game_success(&game);
 	return (0);
 }

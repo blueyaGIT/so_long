@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 20:17:24 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/14 20:21:40 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:15:31 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	open_file(char *path)
 	return (fd);
 }
 
-void	free_stuff(char *line, char *map_string, int fd)
+void	free_all(char *line, char *map_string, int fd)
 {
 	free(line);
 	free(map_string);
@@ -71,7 +71,7 @@ char	*read_lines(int fd)
 		else
 			tmp = ft_strjoin(map_string, line);
 		if (!tmp)
-			free_stuff(line, map_string, fd);
+			free_all(line, map_string, fd);
 		free(map_string);
 		map_string = tmp;
 		free(line);

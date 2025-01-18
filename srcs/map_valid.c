@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:16:25 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/14 20:20:48 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:19:15 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 bool	exit_valid(t_game *game)
 {
-	int	e_found;
+	int	door;
 	int	i;
 	int	j;
 
-	e_found = 0;
+	door = 0;
 	i = 0;
 	j = 1;
 	while (game->map && game->map[i])
@@ -27,23 +27,23 @@ bool	exit_valid(t_game *game)
 		while (game->map[i][j] != '\0')
 		{
 			if (game->map[i][j] == 'E')
-				e_found++;
+				door++;
 			j++;
 		}
 		i++;
 	}
-	if (e_found != 1)
+	if (door != 1)
 		return (false);
 	return (true);
 }
 
 bool	player_valid(t_game *game)
 {
-	int	p_found;
+	int	player;
 	int	i;
 	int	j;
 
-	p_found = 0;
+	player = 0;
 	i = 0;
 	j = 1;
 	while (game->map && game->map[i])
@@ -55,24 +55,24 @@ bool	player_valid(t_game *game)
 			{
 				game->player_pos.x = i;
 				game->player_pos.y = j;
-				p_found++;
+				player++;
 			}
 			j++;
 		}
 		i++;
 	}
-	if (p_found != 1)
+	if (player != 1)
 		return (false);
 	return (true);
 }
 
 bool	coin_valid(t_game *game)
 {
-	int	c_found;
+	int	coin;
 	int	i;
 	int	j;
 
-	c_found = 0;
+	coin = 0;
 	i = 0;
 	j = 1;
 	while (game->map && game->map[i])
@@ -81,13 +81,13 @@ bool	coin_valid(t_game *game)
 		while (game->map[i][j] != '\0')
 		{
 			if (game->map[i][j] == 'C')
-				c_found++;
+				coin++;
 			j++;
 		}
 		i++;
 	}
-	game->num_coins = c_found;
-	if (c_found < 1)
+	game->num_coins = coin;
+	if (coin < 1)
 		return (false);
 	return (true);
 }

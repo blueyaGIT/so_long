@@ -6,27 +6,11 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 15:42:29 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/08 16:48:01 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:15:04 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-bool	top_wall(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (game->map[0][i] != '\0')
-	{
-		if (game->map[0][i] != '1')
-			return (false);
-		if (game->map[0][i + 1] == '\n')
-			break ;
-		i++;
-	}
-	return (true);
-}
 
 bool	checking_false_chars(t_game *game)
 {
@@ -49,6 +33,22 @@ bool	checking_false_chars(t_game *game)
 			i++;
 		}
 		j++;
+	}
+	return (true);
+}
+
+bool	top_wall(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game->map[0][i] != '\0')
+	{
+		if (game->map[0][i] != '1')
+			return (false);
+		if (game->map[0][i + 1] == '\n')
+			break ;
+		i++;
 	}
 	return (true);
 }

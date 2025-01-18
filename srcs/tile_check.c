@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:27:44 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/14 19:32:36 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/18 23:22:18 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ char	**copy_map(char **map)
 	{
 		copy[i] = ft_strdup(map[i]);
 		if (!copy[i])
-		{
-			free_map(&copy);
-			return (NULL);
-		}
+			return (free_map(&copy), NULL);
 		i++;
 	}
 	copy[i] = NULL;
@@ -111,16 +108,10 @@ bool	valid_map_access(t_game *game)
 	if (!map_copy)
 		return (false);
 	if (!find_player_pos(game->map, &player_x, &player_y))
-	{
-		free_map(&map_copy);
-		return (false);
-	}
+		return (free_map(&map_copy), false);
 	tile_check(map_copy, player_x, player_y);
 	if (!check_access(map_copy, game->map))
-	{
-		free_map(&map_copy);
-		return (false);
-	}
+		return (free_map(&map_copy), false);
 	free_map(&map_copy);
 	return (true);
 }
