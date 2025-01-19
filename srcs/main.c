@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:44:03 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/18 23:16:51 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/19 19:09:14 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	main(int argc, char **argv)
 
 	game.move_count = 0;
 	if (argc != 2)
-	{
-		ft_putstr_fd("Error wrong input\n", 2);
-		return (1);
-	}
+		return (ft_putstr_fd("Error wrong input\n", 2), 1);
 	argc = 0;
 	reading_map(&game, argv[1]);
 	map_valid(&game);
