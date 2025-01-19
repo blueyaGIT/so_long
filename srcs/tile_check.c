@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 19:27:44 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/18 23:22:18 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/19 19:05:14 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,19 @@ bool	find_player_pos(char **map, int *player_x, int *player_y)
 	return (false);
 }
 
-bool	check_access(char **map_copy, char **original_map)
+bool	check_access(char **map_copy, char **true_map)
 {
 	int	x;
 	int	y;
 
 	x = 0;
 	y = 0;
-	while (original_map[y] != NULL)
+	while (true_map[y] != NULL)
 	{
 		x = 0;
-		while (original_map[y][x] != '\0')
+		while (true_map[y][x] != '\0')
 		{
-			if ((original_map[y][x] == 'C' || original_map[y][x] == 'E')
+			if ((true_map[y][x] == 'C' || true_map[y][x] == 'E')
 				&& map_copy[y][x] != 'F')
 				return (false);
 			x++;

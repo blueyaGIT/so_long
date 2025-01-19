@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:43:15 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/18 23:16:51 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/19 19:05:14 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ bool				right_wall(t_game *game);
 void				tile_check(char **map, int x, int y);
 char				**copy_map(char **map);
 bool				find_player_pos(char **map, int *player_x, int *player_y);
-bool				check_access(char **map_copy, char **original_map);
+bool				check_access(char **map_copy, char **true_map);
 bool				valid_map_access(t_game *game);
 void				validate_map(char *map_string);
 char				*read_lines(int fd);
