@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 16:16:25 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/18 23:19:15 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:40:12 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ bool	player_valid(t_game *game)
 		{
 			if (game->map[i][j] == 'P')
 			{
-				game->player_pos.x = i;
-				game->player_pos.y = j;
+				game->player_pos.y = i;
+				game->player_pos.x = j;
 				player++;
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: dalbano <dalbano@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 14:04:12 by dalbano           #+#    #+#             */
-/*   Updated: 2025/01/18 23:22:41 by dalbano          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:40:12 by dalbano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_success(void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	if (game->map[game->player_pos.x][game->player_pos.y] == 'E'
+	if (game->map[game->player_pos.y][game->player_pos.x] == 'E'
 		&& game->num_coins == 0)
 		end_game(game);
 }
