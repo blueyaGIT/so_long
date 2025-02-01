@@ -1,6 +1,13 @@
-<a href="https://github.com/blueyaGIT/so_long"><img src="https://github.com/blueyaGIT/blueyaGIT/blob/b34a5a4e10b9019609659eaa0541a4325db88ca5/covers/cover-so_long.png"></a>
-###
+<p align="center">
+  <img src="https://github.com/blueyaGIT/blueyaGIT/blob/master/42_badges/so_longn.png?raw=true" alt="so_long"/>
+</p>
 
+<p align="center">
+  Score: <i>100/100</i><br>
+  Finished: <i>24.01.2025</i><br>
+</p>
+
+###
 
 `so_long` is a 2D game project using the `MiniLibX` graphics library. The objective is to create a simple top-down game where the player navigates through a map, collecting items and reaching an exit while avoiding obstacles. This project is part of the 42 School curriculum.
 
