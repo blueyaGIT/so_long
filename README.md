@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/blueyaGIT/blueyaGIT/blob/master/42_badges/so_longn.png?raw=true" alt="so_long"/>
+  <img src="https://github.com/blueyaGIT/blueyaGIT/blob/master/42_badges/so_longe.png?raw=true" alt="so_long"/>
 </p>
 
 <p align="center">
