@@ -100,4 +100,4 @@ For more details, refer to the project documentation or the `42` subject PDF.
 
 ## ⏳ Previous Project
 
-<a href="https://github.com/blueyaGIT/so_long"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=BF94E4&width=435&lines=so_long"></a>
+<a href="https://github.com/blueyaGIT/minitalk"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=BF94E4&width=435&lines=minitalk"></a>
